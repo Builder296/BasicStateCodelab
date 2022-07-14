@@ -28,7 +28,6 @@ private fun StatelessCounter(
             var showTask by rememberSaveable { mutableStateOf(true) }
             if (showTask) {
                 WellnessTaskItem(
-                    onClose = { },
                     taskName = "Have you taken your 15 minute walk today?"
                 )
             }
