@@ -10,16 +10,8 @@ fun WellnessScreen(modifier: Modifier = Modifier) {
         StatefulCounter(modifier)
 
         val list = remember { getWellnessTasks().toMutableStateList() }
-//        val list = remember {
-//            mutableStateListOf<WellnessTask>().apply {
-//                addAll(getWellnessTasks())
-//            }
-//        }
-//        val list = remember {
-//            mutableStateListOf<WellnessTask>()
-//        }
         list.addAll(getWellnessTasks())
-        WellnessTasksList(list = list, onCloseTask = { task -> list.remove(task)})
+        WellnessTasksList(list = list, onCloseTask = { task -> list.remove(task) })
     }
 }
 
