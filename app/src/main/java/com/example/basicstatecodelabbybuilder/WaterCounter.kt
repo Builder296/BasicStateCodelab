@@ -25,12 +25,6 @@ private fun StatelessCounter(
 ) {
     Column(modifier = modifier.padding(16.dp)) {
         if (count > 0) {
-            var showTask by rememberSaveable { mutableStateOf(true) }
-            if (showTask) {
-                WellnessTaskItem(
-                    taskName = "Have you taken your 15 minute walk today?"
-                )
-            }
             Text("You've had $count glasses.")
         }
         Row(Modifier.padding(top = 8.dp)) {
