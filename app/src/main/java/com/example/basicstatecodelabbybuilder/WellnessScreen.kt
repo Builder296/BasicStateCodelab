@@ -1,13 +1,26 @@
 package com.example.basicstatecodelabbybuilder
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 
 @Composable
 fun WellnessScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         StatefulCounter(modifier)
-        WellnessTasksList()
+
+        val list = remember { getWellnessTasks().toMutableStateList() }
+//        val list = remember {
+//            mutableStateListOf<WellnessTask>().apply {
+//                addAll(getWellnessTasks())
+//            }
+//        }
+//        val list = remember {
+//            mutableStateListOf<WellnessTask>()
+//        }
+        list.addAll(getWellnessTasks())
+        WellnessTasksList(list = list, onCloseTask = { task -> list.remove(task)})
     }
 }
+
+private fun getWellnessTasks() = List(30) { i -> WellnessTask(i, "Task # $i") }
