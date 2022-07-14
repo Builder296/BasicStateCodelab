@@ -12,20 +12,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Checkbox
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
-
-@Composable
-fun WellnessTaskItem(taskName: String, onClose: () -> Unit, modifier: Modifier = Modifier) {
-        var checkedState by rememberSaveable { mutableStateOf(false) }
-
-        WellnessTaskItem(
-                taskName = taskName,
-                checked = checkedState,
-                onCheckedChange = { newValue -> checkedState = newValue },
-                onClose = onClose,
-                modifier = modifier,
-        )
-}
 
 @Composable
 fun WellnessTaskItem(
