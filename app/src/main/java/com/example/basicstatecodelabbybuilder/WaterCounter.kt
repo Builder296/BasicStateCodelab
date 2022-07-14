@@ -11,9 +11,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun WaterCounter(modifier: Modifier = Modifier) {
+fun StatefulCounter(modifier: Modifier = Modifier) {
+    var count by rememberSaveable { mutableStateOf(0)}
+    // --------
+    StatelessCounter(count = count, onIncrement = { count++ }, modifier = modifier)
+}
+
+@Composable
+private fun StatelessCounter(
+    count: Int,
+    onIncrement: () -> Unit,
+    modifier: Modifier
+) {
     Column(modifier = modifier.padding(16.dp)) {
-        var count by rememberSaveable { mutableStateOf(0)}
         if (count > 0) {
             var showTask by rememberSaveable { mutableStateOf(true) }
             if (showTask) {
@@ -26,17 +36,11 @@ fun WaterCounter(modifier: Modifier = Modifier) {
         }
         Row(Modifier.padding(top = 8.dp)) {
             Button(
-                onClick = { count++ },
+                onClick = onIncrement,
                 enabled = count < 10,
                 modifier = Modifier.padding(top = 8.dp)
             ) {
                 Text("Add one")
-            }
-            Button(
-                onClick = { count = 0 },
-                Modifier.padding(top = 8.dp, start = 8.dp)
-            ) {
-                Text("Clear water count")
             }
         }
     }
