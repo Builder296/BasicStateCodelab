@@ -2,6 +2,7 @@ package com.example.basicstatecodelabbybuilder
 
 import androidx.compose.material.Button
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -22,12 +23,20 @@ fun WaterCounter(modifier: Modifier = Modifier) {
             }
             Text("You've had $count glasses.")
         }
-        Button(
-            onClick = { count++ },
-            enabled = count < 10,
-            modifier = Modifier.padding(top = 8.dp)
-        ) {
-            Text("Add one")
+        Row(Modifier.padding(top = 8.dp)) {
+            Button(
+                onClick = { count++ },
+                enabled = count < 10,
+                modifier = Modifier.padding(top = 8.dp)
+            ) {
+                Text("Add one")
+            }
+            Button(
+                onClick = { count = 0 },
+                Modifier.padding(top = 8.dp, start = 8.dp)
+            ) {
+                Text("Clear water count")
+            }
         }
     }
 }
